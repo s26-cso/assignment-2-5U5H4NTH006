@@ -1,0 +1,15 @@
+riscv64-linux-gnu-objdump -d q3/b/target_5U5H4NTH006
+
+Or inspect it in gdb:
+gdb-multiarch q3/b/target_5U5H4NTH006
+set architecture riscv:rv64
+disassemble main
+x/s 0x52cb0
+x/s 0x52cc2
+x/s 0x52cd4
+
+Then generate the payload:
+python3 q3/b/generate_payload.py
+
+Then run:
+qemu-riscv64 q3/b/target_5U5H4NTH006 < q3/b/payload

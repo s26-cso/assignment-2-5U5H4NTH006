@@ -1,0 +1,12 @@
+Option 1:
+riscv64-linux-gnu-objdump -d q3/a/target_5U5H4NTH006
+riscv64-linux-gnu-objdump -s -j .rodata q3/a/target_5U5H4NTH006
+
+Option 2:
+gdb-multiarch q3/a/target_5U5H4NTH006
+set architecture riscv:rv64
+disassemble main
+x/gx 0x83f80
+x/s *(char**)0x83f80
+
+The same idea can be used to inspect the pass/fail strings.
